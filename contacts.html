@@ -26,8 +26,27 @@
     nav ul li::marker {
     color: #ffffff;
     }
+    #loading-screen {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: #121212; /* Clean dark-mode background */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+        transition: opacity 0.5s ease, visibility 0.5s ease;
+    }
+    .fade-out {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+    }
 </style>
 <body>
+    <div id="loading-screen"></div>
     <img height="60px" width="400px" src="Images/title-logo.png" alt="The Major Minors">
     <p></p>
     <header style="color: white; font-size: 20px"><strong>Contact Us</strong></header>
@@ -53,5 +72,12 @@
             <li><a style="color: white; font-size: 16px" href="https://soundcloud.com/the-majorminors" target="_blank">SoundCloud</a></li>
         </ul>
     </nav>
+    <script>
+        window.addEventListener('load', () => {
+            const loader = document.getElementById('loading-screen');
+            loader.classList.add('fade-out');
+            setTimeout(() => { loader.remove(); }, 500); 
+        });
+    </script>
 </body>
 </html>
